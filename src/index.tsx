@@ -1,13 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { Router, RouteComponentProps } from '@reach/router';
+
+import './index.css';
+import { StoreProvider } from './store';
 import reportWebVitals from './reportWebVitals';
 
+import App from './App';
+import HomePage from './HomePage';
+import FavPage from './FavsPage';
+
+const RouterPage = (props: { pageComponent: JSX.Element } & RouteComponentProps) => props.pageComponent;
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+	<React.StrictMode>
+		<StoreProvider>
+			<App path='' />
+
+			<Router>
+				<RouterPage pageComponent={<HomePage />} path='/' />
+				<RouterPage pageComponent={<FavPage />} path='/favs' />
+			</Router>
+		</StoreProvider>
+	</React.StrictMode>,
+	document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function
