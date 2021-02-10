@@ -8,7 +8,7 @@ export default function EpisodeList(props: any): Array<JSX.Element> {
 	return episodes.map((episode: IEpisode) => {
 		return (
 			<section key={episode.id} className='episode-box'>
-				<img src={episode.image.medium} alt={`Rick and mort ${episode.name}`} />
+				<img src={episode.image.medium} alt={`Rick and mort ${episode.name}`} width='250' height='140' sizes='(max-width: 250px) 140px' srcSet={`${episode.image.medium} 250w`} />
 				<div>{episode.name}</div>
 				<section style={{ display: 'flex', justifyContent: 'space-between' }}>
 					<div>

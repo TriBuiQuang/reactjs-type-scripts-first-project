@@ -1,4 +1,5 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const rules = [
     {
@@ -6,7 +7,12 @@ const rules = [
         exclude: /node_modules/,
         loader: 'babel-loader'
     },
-    { test: /\.css$/i, use: [ 'style-loader', 'css-loader' ] }
+    { test: /\.css$/i, use: [ 'style-loader', 'css-loader' ] },
+    {
+        test: /\.js$/,
+        enforce: "pre",
+        use: ["source-map-loader"],
+      },
 ]
 console.log("__dirname", __dirname)
 module.exports = {
@@ -23,5 +29,5 @@ module.exports = {
         contentBase: './public/',
         port: 5000,
         compress: true
-    }
+    },
 }

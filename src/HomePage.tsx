@@ -11,7 +11,7 @@ export default function HomePage() {
 
 	React.useEffect(() => {
 		state.episodes.length === 0 && fetchDataAction(dispatch);
-	});
+	}, []);
 
 	const props: IEpisodeProps = {
 		episodes: state.episodes,
