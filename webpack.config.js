@@ -7,7 +7,7 @@ const rules = [
         loader: 'babel-loader'
     }
 ]
-
+console.log("__dirname", __dirname)
 module.exports = {
     target: 'web',
     mode: "development",
@@ -21,8 +21,6 @@ module.exports = {
     devServer: {
         contentBase: './public/',
         port: 5000,
-        compress: true,
-        lazy: true,
-        filename: 'bundle.js'
+        compress: true
     }
 }
