@@ -6,7 +6,10 @@ import './index.css';
 import { StoreProvider } from './store';
 import reportWebVitals from './reportWebVitals';
 
-import App from './App';
+// import App from './App';
+const App = React.lazy(() => import('./App'));
+// const HomePage = React.lazy(() => import('./HomePage'));
+// const FavPage = React.lazy(() => import('./FavsPage'));
 import HomePage from './HomePage';
 import FavPage from './FavsPage';
 
@@ -15,7 +18,11 @@ const RouterPage = (props: { pageComponent: JSX.Element } & RouteComponentProps)
 ReactDOM.render(
 	<React.StrictMode>
 		<StoreProvider>
-			<App path='' />
+			<React.Suspense fallback={<div>loadding ...</div>}>
+				<App path='' />
+			</React.Suspense>
+			<React.Suspense fallback={<div>loadding ...</div>}></React.Suspense>
+			<React.Suspense fallback={<div>loadding ...</div>}></React.Suspense>
 
 			<Router>
 				<RouterPage pageComponent={<HomePage />} path='/' />
